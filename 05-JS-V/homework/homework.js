@@ -30,7 +30,7 @@ function agregarMetodoPrototype(Constructor) {
 
   Constructor.prototype.saludar = function() {
     return "Hello World!";
-  };
+  }
 }
 
 function agregarStringInvertida() {
@@ -41,16 +41,24 @@ function agregarStringInvertida() {
   // Pista: Necesitarás usar "this" dentro de "reverse"
 
   String.prototype.reverse = function() {
-    //hola
-    //0123
-    //   4
+    //       hola
+    //indice 01234
+    // length   4
     var invertida = "";
     for (let i = 0; i < this.length; i++) {
       invertida = this[i] + invertida;
-     }
+    }
     return invertida;
   };
 }
+
+//tambien puede ser:
+// var invertida = "";
+// for (let i = this.length - 1; i >= 0; i--) {
+//   invertida = invertida + this[i];
+// }
+// return invertida;
+
 
 // ---------------------------------------------------------------------------//
   //Crea el constructor de la clase "Persona"
@@ -84,9 +92,10 @@ function agregarStringInvertida() {
 function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Con esta función vamos a crear una nueva persona a partir de nuestro constructor de persona (creado en el ejercicio anterior)
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades
-  //Devolver la nueva persona creada
+  //Devolver la nueva persona creada 
 
-  var nuevaPersona = new Persona(nombre, apellido, edad, dir)
+  var nuevaPersona = new Persona(nombre, apellido, edad, dir);
+  return nuevaPersona;
 }
   
 function agregarMetodo() {
@@ -94,7 +103,7 @@ function agregarMetodo() {
   //Ej: "Juan, 22 años"
 
   Persona.prototype.datos = function() {
-    return this.nombre + ", " + this.edad + "años";
+    return this.nombre + ", " + this.edad + " años";
 };
 }
 
