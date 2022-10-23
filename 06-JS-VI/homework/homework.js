@@ -8,7 +8,7 @@ function mayuscula(nombre) {
   return nombre[0].toUpperCase() + nombre.slice(1)
 }
 
-console.log(mayuscula("Tobias"))
+//console.log(mayuscula("Tobias"))
 
 function invocarCallback(cb) {
   // Invoca al callback `cb`
@@ -22,8 +22,7 @@ function operacionMatematica(n1, n2, cb) {
   //Devolver el callback pasándole como argumentos los números recibidos.
   //Tu código:
 
-
-  cb(n1,n2)
+  return cb(n1,n2)
 }
 
 function sumarArray(numeros, cb) {
@@ -34,18 +33,34 @@ function sumarArray(numeros, cb) {
 
   var acc = 0
   numeros.forEach(num => {
-    suma = suma + num
+    acc = acc + num
   });
-  cb (suma)
+  cb(acc)
 }
-//tambien puede ser: COMPLETAR VIENDO VIDEO. NO LLEGUE A COMPLETAR 
 
+
+//tambien puede ser: 
+// var acc = 0
+// numeros.forEach(num => {
+//   acc = acc + num
+// });
+// cb(acc)
+
+//tambien puede ser:
+// for (var num of numeros) {
+//   suma = suma + num
+// }
 
 
 function forEach(array, cb) {
+  //matriz === array === arreglo  
   // Itera sobre la matriz "array" y pasa los valores al callback uno por uno
   // Pista: Estarás invocando a `cb` varias veces (una por cada valor en la matriz)
   //Tu código:
+
+  array.forEach(num => {
+    cb(num)
+  })
 }
 
 function map(array, cb) {
@@ -53,12 +68,25 @@ function map(array, cb) {
   // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
   // El nuevo array debe tener la misma longitud que el array del argumento
   //Tu código:
+
+  var newArray = array.map(function(val) {
+    return cb(val)
+  })
+  return newArray
 }
 
 function filter(array) {
   //Filtrar todos los elementos del array que comiencen con la letra "a".
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
+
+  var newArr = []
+  for (const str of array) {
+    if(str[0] === "a") {
+      newArr.push(str)
+    }
+  }
+  return newArr
 }
 
 // No modificar nada debajo de esta línea
